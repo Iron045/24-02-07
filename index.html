@@ -12,6 +12,7 @@
             height: 100vh;
             background: linear-gradient(to bottom, #ffecd2, #fcb69f);
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
         .envelope-container {
@@ -48,67 +49,54 @@
             transform-origin: top;
         }
 
-        .message {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            transition: transform 0.6s ease-in-out;
-        }
-
-        .heart {
+        .paper-message {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            font-size: 40px;
-            color: red;
+            transform: translate(-50%, 0) scale(0);
+            width: 220px;
+            height: 150px;
+            background: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 15px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
             opacity: 0;
-            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+            transition: transform 1.5s ease-out, opacity 1.5s ease-out;
         }
 
         .envelope.open .flap {
             transform: rotateX(180deg);
         }
 
-        .envelope.open .message {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .envelope.open .heart {
+        .envelope.open + .paper-message {
             opacity: 1;
-            animation: flyUp 1.5s ease-out forwards;
+            transform: translate(-50%, -220px) scale(1.1);
         }
 
-        @keyframes flyUp {
-            0% { transform: translate(-50%, 0) scale(1); }
-            50% { transform: translate(-50%, -100px) scale(1.5); }
-            100% { transform: translate(-50%, -200px) scale(1); opacity: 0; }
-        }
     </style>
 </head>
 <body>
     <div class="envelope-container" onclick="toggleEnvelope()">
-        <div class="heart">❤️</div>
         <div class="envelope">
             <div class="flap"></div>
-            <div class="message">📩 Bạn có một tin nhắn mới!<br>"Hãy luôn mỉm cười và tận hưởng ngày hôm nay! 😊"</div>
         </div>
+        <div class="paper-message">✉️ "Hãy luôn mỉm cười và tận hưởng ngày hôm nay! 😊 Chúc bạn một ngày tuyệt vời!"</div>
     </div>
 
     <script>
         function toggleEnvelope() {
-            document.querySelector(".envelope-container").classList.toggle("open");
-            document.querySelector(".envelope").classList.toggle("open");
-            document.querySelector(".heart").classList.toggle("open");
+            const envelope = document.querySelector(".envelope");
+            const paperMessage = document.querySelector(".paper-message");
+            
+            envelope.classList.toggle("open");
+            paperMessage.classList.toggle("open");
         }
     </script>
 </body>
