@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elegant Magic Letter</title>
+    <title>Graduation Invitation</title>
     <style>
         * {
             margin: 0;
@@ -15,23 +15,26 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            background: #fdfcfb;
             font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
         .envelope {
             position: relative;
-            width: 350px;
-            height: 240px;
-            background: linear-gradient(145deg, #ffdde1, #ff758c);
-            border: 2px solid #ff6b6b;
+            width: 300px;
+            height: 200px;
+            background: #f7e7ce;
+            border: 2px solid #d3b08e;
             border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .envelope:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
         }
         .flap {
             position: absolute;
@@ -39,69 +42,61 @@
             left: 0;
             width: 100%;
             height: 50%;
-            background: #ff6b6b;
-            background: linear-gradient(135deg, #ff6b6b, #ff4757);
+            background: #d3b08e;
             border-radius: 10px 10px 0 0;
-            transform-origin: top;
-            transition: transform 0.5s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .seal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: #ff4757;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: bold;
+        .envelope img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
         }
         .message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 85%;
-            padding: 15px;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            margin-top: 20px;
             font-size: 1.2rem;
-            color: #ff6b6b;
+            color: #6b4e3d;
         }
-        .envelope.open .flap {
-            transform: rotateX(180deg);
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            border: 2px solid #d3b08e;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-        .envelope.open .seal {
-            display: none;
+        .form input, .form button {
+            padding: 10px;
+            border: 1px solid #d3b08e;
+            border-radius: 5px;
         }
-        .envelope.open .message {
-            opacity: 1;
+        .form button {
+            background: #d3b08e;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .form button:hover {
+            background: #b8926a;
         }
     </style>
 </head>
 <body>
-    <div class="envelope" onclick="toggleEnvelope()">
-        <div class="flap"></div>
-        <div class="seal">💌</div>
-        <div class="message">✨ You are loved! Believe in yourself! ✨</div>
+    <div class="container">
+        <h1>Graduation Invitation</h1>
+        <div class="envelope">
+            <div class="flap"></div>
+            <img src="graduation-cap.png" alt="Graduation Cap">
+        </div>
+        <div class="envelope">
+            <div class="flap"></div>
+            <p class="message">✨ Join us for the Graduation Dance! ✨</p>
+        </div>
+        <form class="form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="text" placeholder="Personalized Message" required>
+            <button type="submit">Send Invitation</button>
+        </form>
     </div>
-
-    <script>
-        function toggleEnvelope() {
-            const envelope = document.querySelector('.envelope');
-            envelope.classList.toggle('open');
-        }
-    </script>
 </body>
 </html>
